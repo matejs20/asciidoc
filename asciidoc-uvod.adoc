@@ -1,0 +1,186 @@
+= Uvod u AsciiDoc
+Matej Sorić, Sveučilište u Zadru <matejsoric2009@gmail.ocm>
+:revdate: 2025-11-06
+:doctype: article
+:toc:
+:toclevels: 3
+:icons: font
+:source-highlighter: highlightjs
+:sectnums:
+:imagesdir: img/
+:stem: asciimath
+
+[abstract]
+== Sažetak
+Ovaj dokument objašnjava **osnovne principe AsciiDoc** sintakse. Namijenjen je studentima koji već poznaju Markdown, ali žele naučiti alat koji nudi više mogućnosti za strukturiranje i oblikovanje akademskog i tehničkog teksta.
+
+== Što je AsciiDoc
+AsciiDoc je *plain-text* format za pisanje strukturiranih dokumenata. Tekst je lako čitljiv u izvornom obliku i može se pretvoriti u *HTML*, *PDF* ili *DOCX* pomoću alata *Asciidoctor*.
+
+=== Glavne prednosti u odnosu na markdown
+- podržava naslove svih razina (`=`, `==`, `===`)
+- automatski izrađuje sadržaj i numerira poglavlja
+- koristi *atribute* i *varijable*
+- jednostavno dodaje _fusnote_, _tablice_, _citate_ i _blokove koda_
+
+== Struktura dokumenta
+Na početku se obično nalazi naslov, autor, datum i osnovni atributi.
+Naslovi se označavaju simbolima jednakosti (`=`).
+Više znakova znači nižu razinu naslova.
+
+```adoc
+
+Author <email@domena.com>
+:revdate: 2025-11_06
+:doctype: article
+:toc:
+:sectnums:
+```
+
+== Formatiranje teksta
+Tekst se može podebljati, nagnuti ili precrtati.
+
+```adoc
+
+*podebaljano*,_kurziv_,
+[line-through] #precrtano#
+
+```
+
+== Popisi
+Numerirani popisi koriste brojeve ili točke.
+Nenumerirani popisi koriste zvjezdice ili crtice.
+
+
+
+```adoc
+.neumerirani popis 
+..stavka 1
+... stavka 2
+
+```
+. neumerirani popis 
+.. stavka 1
+...  stavka 2
+
+
+
+```adoc
+*numerirani poppis
+**stavka
+***podstvaka
+```
+* numerirani poppis
+** stavka
+*** podstvaka
+
+
+== Linkovi i slike
+Možete dodavati poveznice na web stranice te umetati slike iz lokalne mape projekta.
+
+
+link:https://www.unizd.hr[sveculiste u zadru]
+
+
+image::tiger.png[alt=˝tigar˝, width=60%]
+image::ruby.svg[alt=˝ruby˝,width=40%]
+
+== Citati i fusnote
+Citati se prikazuju u posebnom bloku, uz ime autora.footnote:[navodi se koriste za izjave vaznih osoba]
+
+
+[quote, alan kay]
+____
+najbolji nacin  da previdiš budcnost da je izmisliš
+____
+
+Fusnote se dodaju na kraju rečenice i sadrže kratko objašnjenje.footnote:[ovo je objašnjenje prijašnog teksta]
+
+== Tablice
+Tablice omogućuju pregledno prikazivanje podataka u redovima i stupcima.
+Svaka ćelija odvaja se vertikalnom crtom (|).
+
+[cols=˝1,2˝, options=˝header˝]
+|===
+|element |opis
+|naslov |definira glavni naslov dokumenta
+|`:toc:` | dodaje sadrazaj na pocektu dokumenta 
+|`:sectnums:` |numerira poglavlja automatksi
+|===
+
+== Kod
+Blokovi koda koriste se za prikaz primjera u programskim jezicima.
+Mogu imati i oznaku jezika, npr. python ili bash.
+
+[source, python]
+----
+definiraj pozdrav(ime):
+        print(f"pozdrav, {ime}!")
+
+pozdrav("studenti")
+
+----
+== Napomene
+Posebni blokovi označavaju važne dijelove teksta, poput upozorenja ili savjeta.
+Primjeri su: TIP, NOTE, WARNING i IMPORTANT.
+
+[TIP]
+====
+Koristite asccidoc kada zelIte pisati profesionalanu uredenu dokumentaciju.
+====
+
+[WARNING]
+====
+PRIPAZITE DA SE U ISTOM DOKUMENTU NE MIJESA `ASCCIDOC` I `MARKODOWNU`
+====
+
+
+== Matematicka anotacija i dijagrami
+=== matematicka formule
+u asccidoc  mozemo pisati slozene matematick izarze formule o kojima brine `STEM` antoacijski paket
+
+
+SLAVNA EINSTEINOVA FORMULA GLASI: 
+[stem]
+++++
+[e = mc^2]
+++++
+
+
+[stem]
+
+\begin{bmatrix}
+a & b \\
+c & d \\
+\end{bmatrix}
+
+...
+
+
+=== dijagrami
+
+[mermaid]
+----
+graph TD
+    A[Start] --> B{je li ovo radi}
+    B --> |yes|C[ODLICNO]
+    D --> B
+    C --> E[END]       
+----
+
+[dphviz]
+----
+diagraph g{
+    rankdir=LR;
+    nodre [shape=box ,
+     style0rounded]
+
+     fronted --> backend[label="API"]
+     backend --> database[label="Query"]
+}
+----
+
+== Zaključak
+AsciiDoc kombinira jednostavnost običnog teksta s mogućnostima profesionalnog oblikovanja. Kada savladate osnovnu sintaksu, lako možete izvesti dokument u HTML ili PDF oblik i objaviti ga putem GitHub-a.
+
+
